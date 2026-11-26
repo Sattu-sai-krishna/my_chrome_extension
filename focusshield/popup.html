@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FocusShield</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="brand">
+        <img src="icons/icon48.png" alt="FocusShield" class="brand-icon" />
+        <div>
+          <h1>FocusShield</h1>
+          <p class="subtitle">Pomodoro &amp; Distraction Guard</p>
+        </div>
+      </div>
+      <div class="today-pill" id="today-stats">0m today</div>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="timer">Timer</button>
+      <button class="tab" data-tab="shield">Block List</button>
+    </nav>
+
+    <main class="content">
+      <!-- TAB 1: TIMER -->
+      <section id="tab-timer" class="panel active">
+        <div class="mode-switch">
+          <button class="mode-btn active" data-mode="focus" data-min="25">Focus · 25m</button>
+          <button class="mode-btn" data-mode="focus" data-min="45">Deep · 45m</button>
+          <button class="mode-btn" data-mode="break" data-min="5">Break · 5m</button>
+        </div>
+
+        <div class="ring-wrap">
+          <svg class="ring-svg" viewBox="0 0 160 160">
+            <circle class="ring-bg" cx="80" cy="80" r="68" />
+            <circle class="ring-progress" id="ring-progress" cx="80" cy="80" r="68" />
+          </svg>
+          <div class="ring-center">
+            <div class="time-display" id="time-display">25:00</div>
+            <div class="mode-label" id="mode-label">Ready to focus</div>
+          </div>
+        </div>
+
+        <div class="timer-actions">
+          <button id="btn-toggle-timer" class="btn-primary">Start Focus</button>
+        </div>
+
+        <div class="stats-footer">
+          <span>Sessions completed today: <strong id="sessions-count">0</strong></span>
+        </div>
+      </section>
+
+      <!-- TAB 2: BLOCK LIST -->
+      <section id="tab-shield" class="panel">
+        <p class="shield-desc">Sites below are gently paused while a <strong>Focus</strong> timer is running.</p>
+        <div class="add-site-row">
+          <input type="text" id="site-input" placeholder="Add domain (e.g. tiktok.com)…" />
+          <button id="btn-add-site" type="button">Add</button>
+        </div>
+        <div id="sites-list" class="sites-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

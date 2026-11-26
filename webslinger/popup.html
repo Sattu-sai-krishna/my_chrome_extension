@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebSlinger</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body data-suit="classic">
+  <div class="app">
+    <header class="header">
+      <div class="brand">
+        <img src="icons/icon48.png" alt="WebSlinger" class="brand-icon" />
+        <div>
+          <h1>WebSlinger</h1>
+          <p class="subtitle">Friendly Neighborhood Extension</p>
+        </div>
+      </div>
+      <div class="web-count" title="Webs shot">🕸️ <span id="webs-count">0</span></div>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="powers">Powers</button>
+      <button class="tab" data-tab="swing">Web-Swinger</button>
+    </nav>
+
+    <main class="content">
+      <!-- TAB 1: POWERS -->
+      <section id="tab-powers" class="panel active">
+        <div class="suit-section">
+          <span class="label">Select Spider-Suit</span>
+          <div class="suit-grid">
+            <button class="suit-btn active" data-suit="classic">Classic</button>
+            <button class="suit-btn" data-suit="symbiote">Symbiote</button>
+            <button class="suit-btn" data-suit="iron">Iron</button>
+            <button class="suit-btn" data-suit="neon">Spider-Verse</button>
+          </div>
+        </div>
+
+        <div class="power-card">
+          <div>
+            <h3>🕸️ Web-Shooter Mode</h3>
+            <p>Click anywhere on the webpage to shoot silk webs and stick web-splats.</p>
+          </div>
+          <button id="btn-web-shooter" class="btn-power" data-active="false">Activate</button>
+        </div>
+
+        <div class="power-card">
+          <div>
+            <h3>⚡ Spidey-Sense</h3>
+            <p>Triggers a comic-book tingle border when hovering over external links.</p>
+          </div>
+          <button id="btn-spidey-sense" class="btn-power" data-active="false">Activate</button>
+        </div>
+
+        <div class="quote-box">
+          <p id="spidey-quote">"With great power, there must also come great responsibility."</p>
+        </div>
+      </section>
+
+      <!-- TAB 2: WEB-SWINGER MINI-GAME -->
+      <section id="tab-swing" class="panel">
+        <div class="game-top">
+          <span>Score: <strong id="game-score">0</strong></span>
+          <span>Best: <strong id="game-best">0</strong></span>
+        </div>
+        <canvas id="swing-canvas" width="336" height="225"></canvas>
+        <div class="game-controls">
+          <button id="btn-start-swing" class="btn-power">Start Swing</button>
+          <span class="hint">Click or press Space to shoot web &amp; swing!</span>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

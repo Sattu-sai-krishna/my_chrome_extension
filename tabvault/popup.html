@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TabVault</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="brand">
+        <img src="icons/icon48.png" alt="TabVault" class="brand-icon" />
+        <div>
+          <h1>TabVault</h1>
+          <p class="subtitle">Tab Command Center</p>
+        </div>
+      </div>
+      <div class="health-pill" id="health-pill">0 tabs</div>
+    </header>
+
+    <div class="search-wrap">
+      <span class="search-icon">⌕</span>
+      <input
+        type="text"
+        id="search-input"
+        placeholder="Search open tabs by title or site…"
+        autocomplete="off"
+        autofocus
+      />
+      <button id="btn-clear-search" class="clear-btn hidden" title="Clear search">✕</button>
+    </div>
+
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-tab="open">
+        Open Tabs <span id="open-count" class="pill">0</span>
+      </button>
+      <button class="tab" data-tab="workspaces">
+        Workspaces <span id="ws-count" class="pill">0</span>
+      </button>
+    </nav>
+
+    <main class="content">
+      <!-- TAB 1: OPEN TABS -->
+      <section id="tab-open" class="panel active">
+        <div class="quick-actions">
+          <button id="btn-autogroup" class="qa-btn primary" title="Group tabs by website">
+            <span>◈</span> Auto-Group
+          </button>
+          <button id="btn-dedupe" class="qa-btn" title="Close duplicate URLs">
+            <span>⊘</span> Dedupe <span id="dupe-badge" class="dupe-badge hidden">0</span>
+          </button>
+          <button id="btn-collapse" class="qa-btn" title="Collapse all tab groups">
+            <span>⊟</span> Collapse
+          </button>
+        </div>
+
+        <div id="toast" class="toast hidden"></div>
+        <div id="tabs-list" class="tabs-list"></div>
+      </section>
+
+      <!-- TAB 2: WORKSPACES -->
+      <section id="tab-workspaces" class="panel">
+        <div class="save-ws-box">
+          <input
+            type="text"
+            id="ws-name-input"
+            placeholder="Name this session (e.g. Work, Study)…"
+            maxlength="40"
+          />
+          <button id="btn-save-ws" class="btn-accent">Save Tabs</button>
+        </div>
+        <div id="ws-list" class="ws-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "PixelPal — Playful Browser Pet & Page Arcade",
+  "version": "1.0.0",
+  "description": "A playful browser pet that reacts to your open tabs, rewards focus breaks, and turns any webpage into a stress-relief bubble-pop playground.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Play with PixelPal",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  }
+}

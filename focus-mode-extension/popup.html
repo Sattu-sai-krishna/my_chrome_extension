@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Focus Mode</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            width: 320px; 
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #1a1a2e;
+            color: #eee;
+        }
+        .container { padding: 24px; }
+        .title { 
+            font-size: 24px; 
+            font-weight: 600; 
+            margin-bottom: 8px; 
+        }
+        .subtitle { color: #888; font-size: 14px; margin-bottom: 24px; }
+        .timer { 
+            font-size: 64px; 
+            font-weight: 300; 
+            text-align: center; 
+            letter-spacing: 2px;
+            margin-bottom: 32px;
+        }
+        .buttons { display: flex; gap: 12px; justify-content: center; }
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .btn-start { background: #4ade80; color: #000; }
+        .btn-stop { background: #f87171; color: #000; }
+        button:hover { transform: translateY(-2px); }
+        .stats { 
+            margin-top: 24px; 
+            padding-top: 24px; 
+            border-top: 1px solid #333;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Focus Mode</div>
+        <div class="subtitle">Block distractions, stay productive</div>
+        <div class="timer" id="timer">25:00</div>
+        <div class="buttons">
+            <button class="btn-start" id="startBtn">Start Focus</button>
+            <button class="btn-stop" id="stopBtn">Stop</button>
+        </div>
+        <div class="stats" id="stats">Sessions today: 0</div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "NightShift Pro — Smart Dark Mode & Eye-Care Studio",
+  "version": "1.0.0",
+  "description": "Instant dark mode for any website with smart photo preservation, per-site toggles, and live brightness, contrast, and warmth sliders.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "tabs"
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "NightShift Pro",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ]
+}

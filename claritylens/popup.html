@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ClarityLens</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="brand">
+        <img src="icons/icon48.png" alt="ClarityLens" class="brand-icon" />
+        <div>
+          <h1>ClarityLens</h1>
+          <p class="subtitle">Page Distiller &amp; Focus Companion</p>
+        </div>
+      </div>
+      <span id="readability-badge" class="badge badge-neutral">Scanning…</span>
+    </header>
+
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-tab="gist" role="tab" aria-selected="true">Gist</button>
+      <button class="tab" data-tab="focus" role="tab" aria-selected="false">Focus</button>
+      <button class="tab" data-tab="clips" role="tab" aria-selected="false">
+        Clips <span id="clips-count" class="count-pill">0</span>
+      </button>
+    </nav>
+
+    <main class="content">
+      <!-- TAB 1: GIST -->
+      <section id="tab-gist" class="panel active">
+        <div id="gist-error" class="alert hidden"></div>
+
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <span class="metric-label">Read Time</span>
+            <strong id="metric-time" class="metric-value">—</strong>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Words</span>
+            <strong id="metric-words" class="metric-value">—</strong>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Grade Level</span>
+            <strong id="metric-grade" class="metric-value">—</strong>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <h2>Key Takeaways</h2>
+          <button id="btn-copy-gist" class="btn-ghost" title="Copy summary as Markdown">Copy</button>
+        </div>
+        <ul id="takeaways-list" class="takeaways-list">
+          <li class="skeleton">Analyzing page structure…</li>
+        </ul>
+
+        <div class="section-header">
+          <h2>Core Concepts</h2>
+          <button id="btn-toggle-highlights" class="btn-pill" data-active="false">Highlight on Page</button>
+        </div>
+        <div id="keywords-container" class="keywords-wrap"></div>
+      </section>
+
+      <!-- TAB 2: FOCUS -->
+      <section id="tab-focus" class="panel">
+        <div class="focus-card">
+          <div class="focus-info">
+            <h3>Distraction-Free Reader</h3>
+            <p>Strips sidebars, popups, and clutter into a clean reading overlay.</p>
+          </div>
+          <button id="btn-reader-mode" class="btn-primary">Open Reader</button>
+        </div>
+
+        <div class="focus-card">
+          <div class="focus-info">
+            <h3>Reading Ruler (Spotlight)</h3>
+            <p>Dims surrounding text and highlights the band under your cursor.</p>
+          </div>
+          <button id="btn-ruler-mode" class="btn-secondary" data-active="false">Enable Ruler</button>
+        </div>
+
+        <div class="settings-box">
+          <h3>Reader Appearance</h3>
+          <div class="setting-row">
+            <span>Theme</span>
+            <div class="segmented" id="theme-selector">
+              <button class="seg-btn active" data-theme="paper">Paper</button>
+              <button class="seg-btn" data-theme="sepia">Sepia</button>
+              <button class="seg-btn" data-theme="night">Night</button>
+            </div>
+          </div>
+          <div class="setting-row">
+            <span>Font Size</span>
+            <div class="range-wrap">
+              <input type="range" id="font-size-slider" min="15" max="24" value="18" />
+              <span id="font-size-val">18px</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: CLIPS -->
+      <section id="tab-clips" class="panel">
+        <div class="clips-toolbar">
+          <button id="btn-clip-selection" class="btn-primary btn-sm">+ Clip Selection</button>
+          <div class="clips-actions">
+            <button id="btn-export-clips" class="btn-ghost" title="Download all clips as Markdown">Export .md</button>
+            <button id="btn-clear-clips" class="btn-ghost danger" title="Delete all saved clips">Clear</button>
+          </div>
+        </div>
+        <div id="clips-list" class="clips-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

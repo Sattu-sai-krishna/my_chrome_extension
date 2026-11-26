@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "TabVault — Smart Tab Command Center & Workspaces",
+  "version": "1.0.0",
+  "description": "Tame tab overload with instant cross-window search, one-click duplicate removal, color-coded native tab auto-grouping, and saved workspaces.",
+  "permissions": [
+    "tabs",
+    "tabGroups",
+    "storage"
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Open TabVault",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  }
+}

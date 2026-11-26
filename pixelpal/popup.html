@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PixelPal</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="level-badge" id="pet-level">Lv.1</span>
+        <div>
+          <h1>PixelPal</h1>
+          <div class="xp-track"><div class="xp-fill" id="xp-fill"></div></div>
+        </div>
+      </div>
+      <div class="coins-pill" title="Coins earned">
+        <span class="coin-dot">★</span>
+        <span id="coins-count">25</span>
+      </div>
+    </header>
+
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-tab="pet">Buddy</button>
+      <button class="tab" data-tab="arcade">Arcade</button>
+      <button class="tab" data-tab="shop">Wardrobe</button>
+    </nav>
+
+    <main class="content">
+      <!-- TAB 1: BUDDY -->
+      <section id="tab-pet" class="panel active">
+        <div class="stage" id="pet-stage">
+          <div class="tab-bubble" id="tab-status-msg">Checking your tabs…</div>
+          <div class="particles" id="particles"></div>
+
+          <!-- Expressive SVG Pet -->
+          <div class="pet-wrapper" id="pet-avatar" title="Click to pet!">
+            <svg viewBox="0 0 140 130" class="pet-svg" id="pet-svg">
+              <!-- Shadow -->
+              <ellipse cx="70" cy="116" rx="38" ry="8" fill="rgba(15,23,42,0.12)" />
+              <!-- Ears -->
+              <polygon points="35,44 26,18 52,32" fill="#8b5cf6" />
+              <polygon points="105,44 114,18 88,32" fill="#8b5cf6" />
+              <polygon points="36,40 31,24 47,33" fill="#f9a8d4" />
+              <polygon points="104,40 109,24 93,33" fill="#f9a8d4" />
+              <!-- Body -->
+              <rect x="26" y="30" width="88" height="80" rx="38" fill="#a78bfa" />
+              <!-- Belly highlight -->
+              <ellipse cx="70" cy="84" rx="26" ry="18" fill="#ede9fe" opacity="0.7" />
+              <!-- Cheeks -->
+              <ellipse cx="42" cy="73" rx="6" ry="3.5" fill="#f472b6" opacity="0.75" />
+              <ellipse cx="98" cy="73" rx="6" ry="3.5" fill="#f472b6" opacity="0.75" />
+              <!-- Eyes (normal) -->
+              <g id="eyes-normal">
+                <circle cx="51" cy="62" r="5.5" fill="#1e1b4b" />
+                <circle cx="89" cy="62" r="5.5" fill="#1e1b4b" />
+                <circle cx="53" cy="60" r="2" fill="#ffffff" />
+                <circle cx="91" cy="60" r="2" fill="#ffffff" />
+              </g>
+              <!-- Eyes (happy ^ ^) -->
+              <g id="eyes-happy" class="hidden">
+                <path d="M44 63 Q51 54 58 63" stroke="#1e1b4b" stroke-width="3.5" fill="none" stroke-linecap="round" />
+                <path d="M82 63 Q89 54 96 63" stroke="#1e1b4b" stroke-width="3.5" fill="none" stroke-linecap="round" />
+              </g>
+              <!-- Mouth -->
+              <path id="pet-mouth" d="M62 74 Q70 81 78 74" stroke="#1e1b4b" stroke-width="3" fill="none" stroke-linecap="round" />
+
+              <!-- Hats Layer -->
+              <g id="hat-crown" class="hidden">
+                <polygon points="48,32 54,12 64,24 70,8 76,24 86,12 92,32" fill="#facc15" stroke="#ca8a04" stroke-width="2" />
+              </g>
+              <g id="hat-shades" class="hidden">
+                <rect x="38" y="54" width="26" height="14" rx="4" fill="#0f172a" />
+                <rect x="76" y="54" width="26" height="14" rx="4" fill="#0f172a" />
+                <line x1="64" y1="60" x2="76" y2="60" stroke="#0f172a" stroke-width="3" />
+              </g>
+              <g id="hat-headphones" class="hidden">
+                <path d="M24 64 C24 22, 116 22, 116 64" stroke="#ec4899" stroke-width="6" fill="none" />
+                <rect x="17" y="56" width="12" height="22" rx="6" fill="#db2777" />
+                <rect x="111" y="56" width="12" height="22" rx="6" fill="#db2777" />
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <div class="meters">
+          <div class="meter">
+            <span>Joy</span>
+            <div class="bar"><div class="bar-fill joy" id="bar-joy"></div></div>
+          </div>
+          <div class="meter">
+            <span>Energy</span>
+            <div class="bar"><div class="bar-fill energy" id="bar-energy"></div></div>
+          </div>
+        </div>
+
+        <div class="actions-grid">
+          <button class="action-btn" id="btn-pet">
+            <span>💖</span> Pet (+2 XP)
+          </button>
+          <button class="action-btn" id="btn-snack">
+            <span>🍓</span> Snack (-5 ★)
+          </button>
+          <button class="action-btn accent" id="btn-page-bubbles">
+            <span>🫧</span> Pop Bubbles on Page
+          </button>
+          <button class="action-btn" id="btn-breath">
+            <span>🌬️</span> 15s Reset (+10 ★)
+          </button>
+        </div>
+      </section>
+
+      <!-- TAB 2: ARCADE -->
+      <section id="tab-arcade" class="panel">
+        <div class="arcade-header">
+          <div>
+            <strong>Star Catcher</strong>
+            <span class="muted">Best: <span id="high-score">0</span></span>
+          </div>
+          <div class="arcade-score">Score: <span id="game-score">0</span></div>
+        </div>
+        <canvas id="game-canvas" width="332" height="220"></canvas>
+        <div class="arcade-controls">
+          <button id="btn-start-game" class="btn-primary">Play Mini-Game</button>
+          <span class="hint">Move mouse or ← → keys · Catch ★, dodge 💣</span>
+        </div>
+      </section>
+
+      <!-- TAB 3: WARDROBE -->
+      <section id="tab-shop" class="panel">
+        <p class="shop-intro">Unlock playful accessories with ★ coins earned from games, tab cleanups, and breaks.</p>
+        <div id="shop-list" class="shop-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

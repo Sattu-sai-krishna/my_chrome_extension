@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TypeCraft</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="brand">
+        <img src="icons/icon48.png" alt="TypeCraft" class="brand-icon" />
+        <div>
+          <h1>TypeCraft</h1>
+          <p class="subtitle">Smart Word &amp; Grammar Assistant</p>
+        </div>
+      </div>
+      <label class="switch" title="Enable/disable TypeCraft on all sites">
+        <input type="checkbox" id="toggle-enabled" checked />
+        <span class="slider"></span>
+      </label>
+    </header>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <span class="stat-label">Typos &amp; Grammar</span>
+        <strong id="stat-fixes" class="stat-val">0</strong>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Word Completions</span>
+        <strong id="stat-completions" class="stat-val">0</strong>
+      </div>
+    </div>
+
+    <section class="section">
+      <h2>Live Test Pad</h2>
+      <p class="hint">Try typing: <em>"i am agree teh meetng is more better tomorow"</em> and press <strong>Tab</strong> to accept.</p>
+      <textarea id="test-pad" rows="4" placeholder="Type here to test instant spelling, grammar, and word suggestions…"></textarea>
+    </section>
+
+    <section class="section">
+      <h2>Personal Dictionary</h2>
+      <div class="dict-form">
+        <input type="text" id="dict-input" placeholder="Add a custom word (e.g. your name)…" />
+        <button id="btn-add-word" type="button">Add</button>
+      </div>
+      <div id="dict-list" class="dict-list"></div>
+    </section>
+  </div>
+
+  <script src="dictionary.js"></script>
+  <script src="content.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+/* Tab Organizer Pro - Content Styles */
+[data-tab-organizer="active"] {
+    --tab-organizer-accent: #667eea;
+}
+
+/* Smooth transitions for tab operations */
+body {
+    transition: filter 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+/* Loading indicators */
+.tab-organizer-loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 10000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
